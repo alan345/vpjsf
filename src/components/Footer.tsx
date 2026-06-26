@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getCategories } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { FacebookIcon } from "./icons";
@@ -10,11 +11,14 @@ export const Footer = async () => {
     <footer className="mt-16 border-t border-border bg-surface">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 md:grid-cols-3">
         <div>
-          <h2 className="text-lg font-extrabold">
-            {SITE.name.replace(".fr", "")}
-            <span className="text-brand">.fr</span>
-          </h2>
-          <p className="mt-2 max-w-sm text-sm text-muted">{SITE.description}</p>
+          <Image
+            src="/logo/voila-pourquoi-je-suis-fauche-logo.png"
+            alt={SITE.name}
+            width={926}
+            height={397}
+            className="h-10 w-auto"
+          />
+          <p className="mt-3 max-w-sm text-sm text-muted">{SITE.description}</p>
           <a
             href={SITE.facebook}
             target="_blank"

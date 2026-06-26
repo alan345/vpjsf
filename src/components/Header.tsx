@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense } from "react";
 import { getCategories } from "@/lib/products";
 import { SITE } from "@/lib/site";
@@ -12,14 +13,19 @@ export const Header = async () => {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-surface/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 sm:py-4">
-        <Link href="/" className="flex shrink-0 flex-col leading-none">
-          <span className="text-lg font-extrabold tracking-tight text-foreground sm:text-xl">
-            VoilaPourquoiJeSuisFauché
-            <span className="text-brand">.fr</span>
-          </span>
-          <span className="hidden text-xs text-muted sm:block">
-            {SITE.baseline}
-          </span>
+        <Link
+          href="/"
+          className="flex shrink-0 items-center"
+          aria-label={`${SITE.name} — Accueil`}
+        >
+          <Image
+            src="/logo/voila-pourquoi-je-suis-fauche-logo.png"
+            alt={SITE.name}
+            width={926}
+            height={397}
+            priority
+            className="h-9 w-auto sm:h-11"
+          />
         </Link>
 
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
