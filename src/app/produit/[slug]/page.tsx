@@ -6,7 +6,7 @@ import {
   getProductBySlug,
   getRelatedProducts,
 } from "@/lib/products";
-import { formatDate, renderMarkdown } from "@/lib/format";
+import { formatDate } from "@/lib/format";
 import { SITE } from "@/lib/site";
 import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
@@ -194,7 +194,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div
         className="prose-article"
-        dangerouslySetInnerHTML={{ __html: renderMarkdown(product.content) }}
+        dangerouslySetInnerHTML={{ __html: product.content }}
       />
 
       <div className="mt-8">
