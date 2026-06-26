@@ -12,4 +12,4 @@ export const SITE = {
   facebook: "https://www.facebook.com/Voilapourquoijesuisfauche",
 } as const;
 
-export const PAGE_SIZE = 12;
+export const PAGE_SIZE = 24;
