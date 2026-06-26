@@ -9,6 +9,7 @@ export const SITE = {
     "http://localhost:3000",
   author: "Alan",
   locale: "fr_FR",
+  facebook: "https://www.facebook.com/Voilapourquoijesuisfauche",
 } as const;
 
 export const PAGE_SIZE = 12;

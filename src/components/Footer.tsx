@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getCategories } from "@/lib/products";
 import { SITE } from "@/lib/site";
+import { FacebookIcon } from "./icons";
 
 export const Footer = async () => {
   const categories = await getCategories().catch(() => []);
@@ -14,6 +15,16 @@ export const Footer = async () => {
             <span className="text-brand">.fr</span>
           </h2>
           <p className="mt-2 max-w-sm text-sm text-muted">{SITE.description}</p>
+          <a
+            href={SITE.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Notre page Facebook"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#1877F2] px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          >
+            <FacebookIcon size={18} />
+            Suivez-nous sur Facebook
+          </a>
         </div>
 
         <div>
