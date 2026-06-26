@@ -16,10 +16,12 @@ services:
     plan: free # passer à "starter" pour éviter la mise en veille
     region: frankfurt # au plus proche de vos visiteurs (ex. frankfurt, oregon)
     # Les devDependencies (prisma, typescript, tailwind…) sont nécessaires au build.
-    # `prisma db push` crée/synchronise les tables, puis on insère les produits
-    # d'exemple (le seed est idempotent : upsert) avant le build.
-    buildCommand: npm ci --include=dev && npx prisma db push && npm run db:seed && npm run build
-    startCommand: npm run start
+    buildCommand: npm ci --include=dev && npm run build
+    # La base PostgreSQL interne n'est PAS joignable pendant le build sur Render
+    # (réseau privé disponible uniquement au runtime). Sur le plan gratuit,
+    # `preDeployCommand` n'existe pas : on synchronise donc le schéma et on insère
+    # les produits d'exemple (seed idempotent) au démarrage, avant `next start`.
+    startCommand: npx prisma db push && npm run db:seed && npm run start
     healthCheckPath: /
     autoDeploy: true
     envVars:
