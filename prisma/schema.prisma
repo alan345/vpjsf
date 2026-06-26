@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id          String           @id @default(cuid())
+  name        String
+  slug        String           @unique
+  description String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  products    ProductCategory[]
+
+  @@map("categories")
+}
+
+model Product {
+  id               String            @id @default(cuid())
+  title            String
+  slug             String            @unique
+  shortDescription String
+  // Full blog-post style content (markdown). Rendered on the product page.
+  content          String
+  imageUrl         String
+  // Optional extra gallery images.
+  images           String[]          @default([])
+  affiliateUrl     String
+  price            String?
+  author           String            @default("Alan")
+  published        Boolean           @default(true)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  categories       ProductCategory[]
+
+  @@index([published, createdAt])
+  @@map("products")
+}
+
+// Explicit many-to-many join so we can add metadata later if needed.
+model ProductCategory {
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+
+  @@id([productId, categoryId])
+  @@index([categoryId])
+  @@map("product_categories")
+}
