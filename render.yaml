@@ -3,10 +3,17 @@
 #   Dashboard → New → Blueprint → sélectionner le repo.
 # Render crée la base PostgreSQL + le service web et les relie automatiquement.
 
+# IMPORTANT : la base et le service web DOIVENT être dans la MÊME région,
+# sinon le réseau privé Render ne peut pas résoudre l'hôte interne (erreur P1001).
+# La base déjà créée est dans la région par défaut (oregon) ; on aligne donc le web.
+# Pour passer à "frankfurt", changez les DEUX `region` ci-dessous ET supprimez la
+# base existante dans le dashboard pour qu'elle soit recréée dans la nouvelle région.
+
 databases:
   - name: vpjsf-db
     databaseName: vpjsf
     user: vpjsf
+    region: oregon
     plan: free # passer à "basic-256mb" ou plus pour la production
 
 services:
@@ -14,7 +21,7 @@ services:
     name: vpjsf
     runtime: node
     plan: free # passer à "starter" pour éviter la mise en veille
-    region: frankfurt # au plus proche de vos visiteurs (ex. frankfurt, oregon)
+    region: oregon # MÊME région que la base vpjsf-db
     # Les devDependencies (prisma, typescript, tailwind…) sont nécessaires au build.
     buildCommand: npm ci --include=dev && npm run build
     # La base PostgreSQL interne n'est PAS joignable pendant le build sur Render
