@@ -18,7 +18,7 @@ services:
     # Les devDependencies (prisma, typescript, tailwind…) sont nécessaires au build.
     # `prisma db push` crée/synchronise les tables, puis on insère les produits
     # d'exemple (le seed est idempotent : upsert) avant le build.
-    buildCommand: npm ci --include=dev && npx prisma db push --skip-generate && npm run db:seed && npm run build
+    buildCommand: npm ci --include=dev && npx prisma db push && npm run db:seed && npm run build
     startCommand: npm run start
     healthCheckPath: /
     autoDeploy: true
