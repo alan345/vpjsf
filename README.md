@@ -15,6 +15,7 @@ Catalogue de cadeaux insolites (affiliation). Next.js 16 (App Router) + TypeScri
 ## Prérequis
 
 - Node.js 22+
+- [pnpm](https://pnpm.io) (gestionnaire de paquets)
 - Une base [Prisma Postgres](https://www.prisma.io/postgres)
 
 ## Configuration
@@ -22,7 +23,6 @@ Catalogue de cadeaux insolites (affiliation). Next.js 16 (App Router) + TypeScri
 1. Copier les variables d'environnement :
 
 ```bash
-
 cp .env.example .env
 ```
 
@@ -34,19 +34,19 @@ cp .env.example .env
 3. Installer les dépendances :
 
 ```bash
-npm install
+pnpm install
 ```
 
 4. Créer le schéma en base et générer le client :
 
 ```bash
-npm run db:push
+pnpm db:push
 ```
 
 5. Insérer les produits :
 
 ```bash
-npm run db:seed
+pnpm db:seed
 ```
 
 Les images produits sont servies localement depuis `public/products/` (versionnées dans le dépôt).
@@ -59,7 +59,7 @@ Le dépôt contient un blueprint `vercel.json` (framework Next.js, région `cdg1
 2. Préparer la base **une seule fois** depuis votre machine (`.env` pointant sur Prisma Postgres) :
 
 ```bash
-npm run db:push && npm run db:seed
+pnpm db:push && pnpm db:seed
 ```
 
 3. **Vercel** : importer le dépôt GitHub, puis définir les variables d'environnement :
@@ -69,21 +69,21 @@ npm run db:push && npm run db:seed
 ## Développement
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Le site est disponible sur http://localhost:3000.
 
 ## Scripts utiles
 
-| Script              | Description                                    |
-| ------------------- | ---------------------------------------------- |
-| `npm run dev`       | Serveur de développement                       |
-| `npm run build`     | Build de production (`prisma generate` inclus) |
-| `npm run start`     | Serveur de production                          |
-| `npm run db:push`   | Synchronise le schéma Prisma avec la base      |
-| `npm run db:seed`   | Insère les produits                            |
-| `npm run db:studio` | Ouvre Prisma Studio                            |
+| Script           | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| `pnpm dev`       | Serveur de développement                       |
+| `pnpm build`     | Build de production (`prisma generate` inclus) |
+| `pnpm start`     | Serveur de production                          |
+| `pnpm db:push`   | Synchronise le schéma Prisma avec la base      |
+| `pnpm db:seed`   | Insère les produits                            |
+| `pnpm db:studio` | Ouvre Prisma Studio                            |
 
 ## Ajouter des produits
 
