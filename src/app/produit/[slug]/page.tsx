@@ -7,7 +7,7 @@ import {
   getRelatedProducts,
 } from "@/lib/products";
 import { formatDate } from "@/lib/format";
-import { SITE } from "@/lib/site";
+import { SITE, withAffiliateTag } from "@/lib/site";
 import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             price: product.price.replace(/[^0-9,.]/g, "").replace(",", "."),
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
-            url: product.affiliateUrl,
+            url: withAffiliateTag(product.affiliateUrl),
           },
         }
       : {}),
@@ -182,7 +182,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </p>
         </div>
         <a
-          href={product.affiliateUrl}
+          href={withAffiliateTag(product.affiliateUrl)}
           target="_blank"
           rel="nofollow sponsored noopener"
           className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-md transition-colors hover:bg-brand-dark"
@@ -199,7 +199,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div className="mt-8">
         <a
-          href={product.affiliateUrl}
+          href={withAffiliateTag(product.affiliateUrl)}
           target="_blank"
           rel="nofollow sponsored noopener"
           className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-md transition-colors hover:bg-brand-dark"

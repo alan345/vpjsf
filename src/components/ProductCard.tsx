@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ProductWithCategories } from "@/lib/products";
 import { formatDate } from "@/lib/format";
+import { withAffiliateTag } from "@/lib/site";
 
 export const ProductCard = ({
   product,
@@ -24,7 +25,7 @@ export const ProductCard = ({
           />
         </Link>
         <a
-          href={product.affiliateUrl}
+          href={withAffiliateTag(product.affiliateUrl)}
           target="_blank"
           rel="nofollow sponsored noopener"
           className="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-md bg-brand px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-colors hover:bg-brand-dark"

@@ -13,3 +13,18 @@ export const SITE = {
 } as const;
 
 export const PAGE_SIZE = 24;
+
+export const AFFILIATE_TAG = "vpjsf-21";
+
+export const withAffiliateTag = (rawUrl: string): string => {
+  try {
+    const url = new URL(rawUrl);
+    if (url.searchParams.has("tag")) return rawUrl;
+    url.searchParams.set("tag", AFFILIATE_TAG);
+    return url.toString();
+  } catch {
+    if (/[?&]tag=/.test(rawUrl)) return rawUrl;
+    const separator = rawUrl.includes("?") ? "&" : "?";
+    return `${rawUrl}${separator}tag=${AFFILIATE_TAG}`;
+  }
+};
