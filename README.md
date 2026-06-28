@@ -15,7 +15,7 @@ Catalogue de cadeaux insolites (affiliation). Next.js 16 (App Router) + TypeScri
 ## Prérequis
 
 - Node.js 22+
-- Un projet [Supabase](https://supabase.com) (PostgreSQL + Storage)
+- Une base [Prisma Postgres](https://www.prisma.io/postgres)
 
 ## Configuration
 
@@ -25,10 +25,9 @@ Catalogue de cadeaux insolites (affiliation). Next.js 16 (App Router) + TypeScri
 cp .env.example .env
 ```
 
-2. Renseigner dans `.env` (toutes ces valeurs sont dans le dashboard Supabase → Project Settings) :
-   - `DATABASE_URL` : connexion **pooler** (Supavisor, port `6543`, `?pgbouncer=true`) — utilisée au runtime.
-   - `DIRECT_URL` : connexion **directe** (port `5432`) — utilisée par le CLI Prisma (migrations/seed).
-   - `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` : pour le stockage des images.
+2. Renseigner dans `.env` (valeurs fournies par Prisma Postgres) :
+   - `POSTGRES_URL` : connexion **directe** (TCP) — utilisée par l'app (adaptateur `pg`) et le CLI Prisma.
+   - `PRISMA_DATABASE_URL` : connexion Accelerate (`prisma+postgres://`) — optionnelle.
    - `NEXT_PUBLIC_SITE_URL` : URL publique du site.
 
 3. Installer les dépendances :
@@ -43,31 +42,27 @@ npm install
 npm run db:push
 ```
 
-5. Envoyer les images vers Supabase Storage (crée le bucket public et réécrit `prisma/seed.ts` avec les URLs Supabase) :
-
-```bash
-npm run images:upload
-```
-
-6. Insérer les produits :
+5. Insérer les produits :
 
 ```bash
 npm run db:seed
 ```
 
-## Déploiement (Vercel + Supabase)
+Les images produits sont servies localement depuis `public/products/` (versionnées dans le dépôt).
+
+## Déploiement (Vercel + Prisma Postgres)
 
 Le dépôt contient un blueprint `vercel.json` (framework Next.js, région `cdg1` / Paris).
 
-1. **Supabase** : créer un projet, récupérer les chaînes de connexion (`DATABASE_URL` pooler + `DIRECT_URL` directe) et les clés.
-2. Préparer la base et les images **une seule fois** depuis votre machine (`.env` pointant sur Supabase) :
+1. **Prisma Postgres** : créer une base, récupérer `POSTGRES_URL` (directe) et `PRISMA_DATABASE_URL` (Accelerate).
+2. Préparer la base **une seule fois** depuis votre machine (`.env` pointant sur Prisma Postgres) :
 
 ```bash
-npm run db:push && npm run images:upload && npm run db:seed
+npm run db:push && npm run db:seed
 ```
 
-3. **Vercel** : importer le dépôt GitHub, puis définir les variables d'environnement du projet :
-   `DATABASE_URL`, `DIRECT_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_STORAGE_BUCKET`, `NEXT_PUBLIC_SITE_URL`.
+3. **Vercel** : importer le dépôt GitHub, puis définir les variables d'environnement :
+   `POSTGRES_URL`, `PRISMA_DATABASE_URL`, `NEXT_PUBLIC_SITE_URL`.
 4. Déployer. Le build (`prisma generate && next build`) ne touche pas la base (pages rendues dynamiquement).
 
 ## Développement
@@ -88,8 +83,7 @@ Le site est disponible sur http://localhost:3000.
 | `npm run db:push`  | Synchronise le schéma Prisma avec la base     |
 | `npm run db:seed`  | Insère les produits                           |
 | `npm run db:studio`| Ouvre Prisma Studio                           |
-| `npm run images:upload` | Envoie `public/products/` vers Supabase Storage |
 
 ## Ajouter des produits
 
-Les produits s'ajoutent **directement en base de données** (table `products`, liée à `categories` via `product_categories`). Le champ `content` contient du **HTML** rendu sur la page produit. Pour les images, déposez-les dans le bucket Supabase `product-images` et collez l'URL publique dans `imageUrl`.
+Les produits s'ajoutent **directement en base de données** (table `products`, liée à `categories` via `product_categories`). Le champ `content` contient du **HTML** rendu sur la page produit. Pour les images, déposez le fichier dans `public/products/` et renseignez `imageUrl` (ex. `/products/mon-image.jpg`).
