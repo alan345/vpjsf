@@ -28,3 +28,12 @@ export const withAffiliateTag = (rawUrl: string): string => {
     return `${rawUrl}${separator}tag=${AFFILIATE_TAG}`;
   }
 };
+
+// Ajoute le tag d'affiliation aux liens Amazon présents dans du HTML
+// (ex. le bouton « Voir le prix sur Amazon » dans le contenu d'un produit).
+export const tagAffiliateLinksInHtml = (html: string): string =>
+  html.replace(
+    /href="([^"]*)"/g,
+    (match, url: string) =>
+      /amazon\./i.test(url) ? `href="${withAffiliateTag(url)}"` : match
+  );

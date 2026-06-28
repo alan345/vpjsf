@@ -7,7 +7,7 @@ import {
   getRelatedProducts,
 } from "@/lib/products";
 import { formatDate } from "@/lib/format";
-import { SITE, withAffiliateTag } from "@/lib/site";
+import { SITE, withAffiliateTag, tagAffiliateLinksInHtml } from "@/lib/site";
 import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -194,7 +194,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div
         className="prose-article"
-        dangerouslySetInnerHTML={{ __html: product.content }}
+        dangerouslySetInnerHTML={{
+          __html: tagAffiliateLinksInHtml(product.content),
+        }}
       />
 
       <div className="mt-8">
