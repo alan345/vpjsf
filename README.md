@@ -22,6 +22,7 @@ Catalogue de cadeaux insolites (affiliation). Next.js 16 (App Router) + TypeScri
 1. Copier les variables d'environnement :
 
 ```bash
+
 cp .env.example .env
 ```
 
@@ -75,14 +76,14 @@ Le site est disponible sur http://localhost:3000.
 
 ## Scripts utiles
 
-| Script             | Description                                   |
-| ------------------ | --------------------------------------------- |
-| `npm run dev`      | Serveur de développement                      |
-| `npm run build`    | Build de production (`prisma generate` inclus)|
-| `npm run start`    | Serveur de production                         |
-| `npm run db:push`  | Synchronise le schéma Prisma avec la base     |
-| `npm run db:seed`  | Insère les produits                           |
-| `npm run db:studio`| Ouvre Prisma Studio                           |
+| Script              | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| `npm run dev`       | Serveur de développement                       |
+| `npm run build`     | Build de production (`prisma generate` inclus) |
+| `npm run start`     | Serveur de production                          |
+| `npm run db:push`   | Synchronise le schéma Prisma avec la base      |
+| `npm run db:seed`   | Insère les produits                            |
+| `npm run db:studio` | Ouvre Prisma Studio                            |
 
 ## Ajouter des produits
 
