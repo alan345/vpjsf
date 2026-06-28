@@ -87,4 +87,10 @@ Le site est disponible sur http://localhost:3000.
 
 ## Ajouter des produits
 
-Les produits s'ajoutent **directement en base de données** (table `products`, liée à `categories` via `product_categories`). Le champ `content` contient du **HTML** rendu sur la page produit. Pour les images, déposez le fichier dans `public/products/` et renseignez `imageUrl` (ex. `/products/mon-image.jpg`).
+Les produits s'ajoutent **directement en base de données** (table `products`, liée à `categories` via `product_categories`). Le champ `content` contient du **HTML** rendu sur la page produit. Les images sont hébergées sur **Vercel Blob** ; envoyez votre fichier (dashboard Vercel → Storage → Blob, ou `put()` du SDK) et collez l'URL publique dans `imageUrl`.
+
+Pour migrer les images locales `public/products/` vers Vercel Blob et mettre à jour la base :
+
+```bash
+pnpm images:blob
+```
