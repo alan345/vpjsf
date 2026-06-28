@@ -94,3 +94,7 @@ Pour migrer les images locales `public/products/` vers Vercel Blob et mettre à 
 ```bash
 pnpm images:blob
 ```
+
+https://developers.facebook.com/tools/explorer/
+
+https://developers.facebook.com/tools/debug/accesstoken
