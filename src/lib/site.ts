@@ -10,6 +10,8 @@ export const SITE = {
   author: "Alan",
   locale: "fr_FR",
   facebook: "https://www.facebook.com/Voilapourquoijesuisfauche",
+  // Google Analytics 4 — Measurement ID (Stream ID 5978269622)
+  gaId: "G-GY2C0C9G9V",
 } as const;
 
 export const PAGE_SIZE = 24;

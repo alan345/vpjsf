@@ -95,6 +95,18 @@ Pour migrer les images locales `public/products/` vers Vercel Blob et mettre à 
 pnpm images:blob
 ```
 
+## facebook token
+
 https://developers.facebook.com/tools/explorer/
 
 https://developers.facebook.com/tools/debug/accesstoken
+
+pnpm tsx scripts/fb-longlived-token.ts "PASTE_THE_NEW_USER_TOKEN"
+
+```
+create a new post in the site. product https://www.amazon.fr/-/en/Solar-ecological-case-Suncase-Black/dp/B01ES54F2G
+uplaod image from amazn image to vercel blob
+create a nice decsription and title. Fun but SEO friendly.
+create a script and then execute, similar to
+scripts/2026-06-01-2120_add-product.ts
+```
