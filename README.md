@@ -103,10 +103,16 @@ https://developers.facebook.com/tools/debug/accesstoken
 
 pnpm tsx scripts/fb-longlived-token.ts "PASTE_THE_NEW_USER_TOKEN"
 
+# Instructions to crete a new post
+
 ```
-create a new post in the site. product https://www.amazon.fr/-/en/Solar-ecological-case-Suncase-Black/dp/B01ES54F2G
-uplaod image from amazn image to vercel blob
+create a new post in the site.
+
+You will get most of the data from the amaxon product https://www.amazon.fr/-/en/Acme-Klein-Bottle-3-14159-Handmade/dp/B017UY60MK/
+uplaod image from amazon image to vercel blob.
 create a nice decsription and title. Fun but SEO friendly.
 create a script and then execute, similar to
 scripts/2026-06-01-2120_add-product.ts
+
+create ascript and execute to publish to facebook
 ```

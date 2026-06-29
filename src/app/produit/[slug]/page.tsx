@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -9,6 +8,7 @@ import {
 import { formatDate } from "@/lib/format";
 import { SITE, withAffiliateTag, tagAffiliateLinksInHtml } from "@/lib/site";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductGallery } from "@/components/ProductGallery";
 import { JsonLd } from "@/components/JsonLd";
 
 export const dynamic = "force-dynamic";
@@ -135,36 +135,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </header>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-        <Image
-          src={product.imageUrl}
-          alt={product.title}
-          width={1000}
-          height={1000}
-          priority
-          sizes="(max-width: 896px) 100vw, 896px"
-          className="h-auto w-full object-cover"
-        />
-      </div>
-
-      {product.images.length > 0 && (
-        <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
-          {product.images.map((src) => (
-            <div
-              key={src}
-              className="overflow-hidden rounded-xl border border-border bg-surface"
-            >
-              <Image
-                src={src}
-                alt={product.title}
-                width={300}
-                height={300}
-                className="h-auto w-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      <ProductGallery images={gallery} title={product.title} />
 
       <p className="mt-6 text-lg font-medium text-foreground/90">
         {product.shortDescription}
