@@ -50,9 +50,7 @@ const PRODUCT = {
 <p>Magie solaire oblige, il lui faut du <strong>vrai soleil</strong> pour donner le meilleur de lui-même : par grand beau temps, l'allumage est rapide&nbsp;; par ciel gris, mieux vaut garder un plan B sous le coude. Un peu de patience les premiers essais, et vous deviendrez vite incollable sur l'art d'allumer un feu avec l'astre du jour.</p>
 
 <h2>Le verdict</h2>
-<p>Malin, écolo et terriblement satisfaisant à utiliser, ce <strong>briquet solaire</strong> est le cadeau insolite qui réconcilie gadget et bonne conscience. Un objet qu'on garde des années… et qui ne vous lâchera jamais en plein apéro faute d'essence.</p>
-
-<p style="text-align:center;margin-top:30px;"><a href="https://www.amazon.fr/dp/B01ES54F2G" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;padding:14px 32px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:18px;">Voir le prix sur Amazon</a></p>`,
+<p>Malin, écolo et terriblement satisfaisant à utiliser, ce <strong>briquet solaire</strong> est le cadeau insolite qui réconcilie gadget et bonne conscience. Un objet qu'on garde des années… et qui ne vous lâchera jamais en plein apéro faute d'essence.</p>`,
 };
 
 const CATEGORY_NAMES: Record<string, string> = {

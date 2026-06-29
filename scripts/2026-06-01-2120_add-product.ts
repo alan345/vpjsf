@@ -47,9 +47,7 @@ const PRODUCT = {
 </ul>
 
 <h2>Le verdict</h2>
-<p>Pratique, original et franchement stylé, ce <strong>parapluie samouraï</strong> est l'accessoire parfait pour ne plus jamais subir la pluie en silence. Offrez-le (ou offrez-le-vous) : c'est le genre d'objet qui déclenche immanquablement la question « mais où tu as trouvé ça ?! ».</p>
-
-<p style="text-align:center;margin-top:30px;"><a href="https://www.amazon.fr/dp/B07TXCMYFP" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;padding:14px 32px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:18px;">Voir le prix sur Amazon</a></p>`,
+<p>Pratique, original et franchement stylé, ce <strong>parapluie samouraï</strong> est l'accessoire parfait pour ne plus jamais subir la pluie en silence. Offrez-le (ou offrez-le-vous) : c'est le genre d'objet qui déclenche immanquablement la question « mais où tu as trouvé ça ?! ».</p>`,
 };
 
 const CATEGORY_NAMES: Record<string, string> = {
