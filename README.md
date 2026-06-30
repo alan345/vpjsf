@@ -108,11 +108,15 @@ pnpm tsx scripts/fb-longlived-token.ts "PASTE_THE_NEW_USER_TOKEN"
 ```
 create a new post in the site.
 
-You will get most of the data from the amaxon product https://www.amazon.fr/-/en/Acme-Klein-Bottle-3-14159-Handmade/dp/B017UY60MK/
+You will get most of the data from the amaxon product https://www.amazon.fr/-/en/Tonysa-Anti-Gravity-Droplets-Humidifier-Humidifiers/dp/B0CFXWSM4D
 uplaod image from amazon image to vercel blob.
 create a nice decsription and title. Fun but SEO friendly.
+in the context https://voilapourquoijesuisfauche.fr is a blog that list funny products on the internet. It should be funny.
+
 create a script and then execute, similar to
 scripts/2026-06-01-2120_add-product.ts
+create a script and execute
+In the script add the facebook call to publish the item.
 
-create ascript and execute to publish to facebook
+
 ```
