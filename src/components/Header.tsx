@@ -21,9 +21,10 @@ export const Header = async () => {
           <Image
             src="/logo/voila-pourquoi-je-suis-fauche-logo.png"
             alt={SITE.name}
-            width={926}
-            height={397}
+            width={400}
+            height={171}
             priority
+            sizes="(min-width: 640px) 103px, 84px"
             className="h-9 w-auto sm:h-11"
           />
         </Link>

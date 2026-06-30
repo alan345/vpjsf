@@ -14,8 +14,9 @@ export const Footer = async () => {
           <Image
             src="/logo/voila-pourquoi-je-suis-fauche-logo.png"
             alt={SITE.name}
-            width={926}
-            height={397}
+            width={400}
+            height={171}
+            sizes="93px"
             className="h-10 w-auto"
           />
           <p className="mt-3 max-w-sm text-sm text-muted">{SITE.description}</p>
